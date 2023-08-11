@@ -1,0 +1,92 @@
+<ng-container *ngIf="formAddMedicamento">
+  <p-card role="region" [style]="{ width: '600px' }">
+    <form [formGroup]="formAddMedicamento" novalidate autocomplete="off" class="p-card-body">
+      <div>
+        <h2 class="p-dialog-title">Nuevo Medicamento</h2>
+      </div>
+      <div class="p-dialog-content p-fluid p-mb-3">
+        <div class="p-field m-1">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" type="text" formControlName="nombre" class="p-inputtext">
+          <div class="p-invalid span-no-margin">
+            <ng-container
+              *ngIf="formAddMedicamento.controls['nombre'].invalid && formAddMedicamento.controls['nombre'].touched">
+              <span class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">Este campo es
+                requerido</span>
+            </ng-container>
+          </div>
+        </div>
+        <div class="p-field m-1">
+          <label for="laboratorioFabrica">Laboratorio Fabrica</label>
+          <input id="laboratorioFabrica" type="text" formControlName="laboratorioFabrica" class="p-inputtext">
+          <div class="p-invalid">
+            <ng-container
+              *ngIf="formAddMedicamento.controls['laboratorioFabrica'].invalid && formAddMedicamento.controls['laboratorioFabrica'].touched">
+              <span class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">Este campo es
+                requerido</span>
+            </ng-container>
+          </div>
+        </div>
+        <div class="p-field m-1">
+          <label for="cantidadStock">Cantidad Stock</label>
+          <input id="cantidadStock" type="text" formControlName="cantidadStock" class="p-inputtext">
+          <div class="p-invalid">
+            <ng-container
+              *ngIf="formAddMedicamento.get('cantidadStock')!.hasError('required') && formAddMedicamento.controls['cantidadStock'].touched">
+              <span class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                Este campo es requerido
+              </span>
+            </ng-container>
+            <ng-container *ngIf="formAddMedicamento.get('cantidadStock')!.hasError('pattern')">
+              <span class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                Este campo debe ser un número positivo
+              </span>
+            </ng-container>
+          </div>
+        </div>
+        <div class="p-field m-1">
+          <label for="valorUnitario">Valor Unitario</label>
+          <input id="valorUnitario" type="text" formControlName="valorUnitario" class="p-inputtext">
+          <div class="p-invalid">
+            <ng-container
+              *ngIf="formAddMedicamento.controls['valorUnitario'].invalid && formAddMedicamento.controls['valorUnitario'].touched">
+              <span class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">Este campo es
+                requerido</span>
+            </ng-container>
+          </div>
+        </div>
+        <div class="p-field m-2">
+          <label for="fechaFabricacion">Fecha Fabricación</label>
+          <input id="fechaFabricacion" type="date" formControlName="fechaFabricacion" class="p-inputtext">
+          <div class="p-invalid">
+            <ng-container *ngIf="form['fechaFabricacion'].invalid && form['fechaFabricacion'].touched">
+              <span class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">Este campo es
+                requerido</span>
+            </ng-container>
+          </div>
+        </div>
+        <div class="p-field m-2">
+          <label for="fechaVencimiento">Fecha De Vencimiento</label>
+          <input id="fechaVencimiento" type="date" formControlName="fechaVencimiento" class="p-inputtext">
+          <div class="p-invalid">
+            <ng-container *ngIf="form['fechaVencimiento'].invalid && form['fechaVencimiento'].touched">
+              <span class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">Este campo es
+                requerido</span>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="mt-2 flex flex-row-reverse conten">
+        <button type="button" pButton (click)="dialogRef.close()"
+          class="p-button-sm p-button-secondary p-button-rounded m-1">
+          Cancelar
+        </button>
+        <button (click)="onFormSubmit()" [disabled]="!formAddMedicamento.valid" pButton
+          class="p-button-sm p-button-success p-button-rounded m-1">
+          Crear
+        </button>
+      </div>
+    </form>
+  </p-card>
+</ng-container>
+

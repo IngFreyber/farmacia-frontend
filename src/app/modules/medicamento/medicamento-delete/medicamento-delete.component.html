@@ -1,0 +1,10 @@
+<div>
+  <h3 mat-dialog-title>¿Estás seguro que deseas eliminar medicamento con nombre
+    {{dataMedicamento.nombre}}?</h3>
+</div>
+<div class="m-3 flex flex-row-reverse">
+  <p-button styleClass="p-button-rounded p-button-secondary p-button-sm m-1" (click)="dialogRef.close()">Cancelar
+  </p-button>
+  <p-button styleClass="p-button-rounded p-button-warning p-button-sm m-1" (click)="onFormSubmit()">Eliminar
+  </p-button>
+</div>

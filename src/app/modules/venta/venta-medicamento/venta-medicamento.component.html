@@ -1,0 +1,39 @@
+<ng-container *ngIf="formAddVentaMedicamento">
+  <p-card role="region">
+    <form [formGroup]="formAddVentaMedicamento" novalidate autocomplete="off" class="p-card-body">
+      <div>
+        <h2 class="p-dialog-title">Venta De Medicamento: {{dataVentaMedicamento.nombre}}</h2>
+      </div>
+      <div class="p-dialog-content p-fluid p-mb-3">
+        <div class="flex p-field m-1 mt-3">
+          <span>Stock: {{dataVentaMedicamento.cantidadStock}}</span>
+        </div>
+        <div class="p-field m-1 mt-2">
+          <label for="cantidad">Cantidad</label>
+          <input id="cantidad" type="text" formControlName="cantidad" class="p-inputtext">
+          <div class="p-invalid span-no-margin">
+            <ng-container *ngIf="form['cantidad'].invalid && form['cantidad'].touched">
+              <span class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">Este campo es
+                requerido</span>
+            </ng-container>
+          </div>
+        </div>
+        <div class="flex p-field m-1 mt-3">
+          <span>Valor unitario: {{dataVentaMedicamento.valorUnitario}}</span>
+          <span class="ml-3">Valor total: {{precioTotalMedicamento}}</span>
+        </div>
+      </div>
+      <div class="mt-2 flex flex-row-reverse">
+        <button type="button" pButton (click)="dialogRef.close()"
+          class="p-button-sm p-button-secondary p-button-rounded m-1">
+          Cancelar
+        </button>
+        <button (click)="onFormSubmit()" [disabled]="!formAddVentaMedicamento.valid" pButton
+          class="p-button-sm p-button-success p-button-rounded m-1">
+          Vender
+        </button>
+      </div>
+    </form>
+  </p-card>
+</ng-container>
+

@@ -1,0 +1,37 @@
+<div class="m-2 mt-4">
+  <form [formGroup]="formVenta" novalidate autocomplete="off" class="p-card-body">
+    <label for="fecha">Fecha</label>
+    <input id="fecha" type="date" formControlName="fecha" class="p-inputtext ml-1">
+  </form>
+</div>
+<p-table [value]="sale" [tableStyle]="{'min-width': '60rem'}" [paginator]="true" [rows]="5">
+  <ng-template pTemplate="caption">
+    <div class="flex align-items-center justify-content-between">
+      Ventas
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th class="text-center">Medicamento</th>
+      <th class="text-center">Fecha Venta</th>
+      <th class="text-center">Valor Unitario</th>
+      <th class="text-center">Cantidad</th>
+      <th class="text-center">Valor Total</th>
+    </tr>
+  </ng-template>
+  <ng-template class="align-items-center" pTemplate="body" let-sale>
+    <tr>
+      <td class="text-center">{{sale.nombreMedicamento}}</td>
+      <td class="text-center">{{sale.fecha}}</td>
+      <td class="text-center">{{sale.valorUnitario}} </td>
+      <td class="text-center">{{sale.cantidad}}</td>
+      <td class="text-center">{{sale.valorTotal}}</td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    <div class="flex align-items-center justify-content-between">
+      Total: {{sale ? sale.length : 0 }} Ventas.
+    </div>
+  </ng-template>
+</p-table>
+

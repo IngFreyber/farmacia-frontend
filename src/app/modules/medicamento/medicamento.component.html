@@ -1,0 +1,63 @@
+<div class="m-2 mt-4">
+  <mat-card class="mt-4">
+    <form [formGroup]="formMedicamento" novalidate autocomplete="off" class="p-card-body ">
+      <input id="nombre" type="text" formControlName="nombre" class="p-inputtext ml-1" placeholder="Nombre">
+    </form>
+  </mat-card>
+</div>
+<p-table [value]="products" [tableStyle]="{'min-width': '70rem'}" [paginator]="true" [rows]="5">
+  <ng-template pTemplate="caption">
+    <div class="flex align-items-center justify-content-between">
+      Productos
+      <p-button label="Nuevo Medicamento" class="ml-auto justify-content-end" styleClass="p-button-rounded p-button-sm" pTooltip="Nuevo"
+        matTooltipPosition="above" (click)="saveMedicamentoDialog()">
+        <mat-icon>add</mat-icon>
+      </p-button>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th class="text-center">Nombre</th>
+      <th class="text-center">Laboratorio de fabrica</th>
+      <th class="text-center">Fecha de Fabricación</th>
+      <th class="text-center">Fecha de Vencimiento</th>
+      <th class="text-center">Stock</th>
+      <th class="text-center">Valor Unitario</th>
+      <th class="text-center">Opciones</th>
+    </tr>
+  </ng-template>
+  <ng-template class="align-items-center" pTemplate="body" let-product>
+    <tr>
+      <td class="text-center">{{product.nombre}}</td>
+      <td class="text-center">{{product.laboratorioFabrica}}</td>
+      <td class="text-center">{{product.fechaFabricacion}}</td>
+      <td class="text-center">{{product.fechaVencimiento}}</td>
+      <td class="text-center">{{product.cantidadStock}}</td>
+      <td class="text-center">{{product.valorUnitario | currency:'COP'}}</td>
+      <td class="text-center flex">
+
+        <p-button styleClass="p-button-success p-button-sm p-button-rounded p-button-text m-1" pTooltip="Vender"
+          matTooltipPosition="above" (click)="sellMedicamentoDialog(product)">
+          <mat-icon>point_of_sale</mat-icon>
+        </p-button>
+
+        <p-button styleClass="p-button-warning p-button-sm p-button-rounded p-button-text m-1" pTooltip="Editar"
+          matTooltipPosition="above" (click)="editMedicamentoDialog(product)">
+          <mat-icon>edit</mat-icon>
+        </p-button>
+
+        <p-button styleClass="p-button-danger p-button-sm p-button-rounded p-button-text m-1" pTooltip="Eliminar"
+          matTooltipPosition="above" (click)="deleteMedicamentoDialog(product)">
+          <mat-icon>delete</mat-icon>
+        </p-button>
+
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    <div class="flex align-items-center justify-content-between">
+      Total: {{products ? products.length : 0 }} productos.
+    </div>
+  </ng-template>
+</p-table>
+
