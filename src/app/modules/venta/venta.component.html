@@ -1,8 +1,13 @@
-<div class="m-2 mt-4">
-  <form [formGroup]="formVenta" novalidate autocomplete="off" class="p-card-body">
-    <label for="fecha">Fecha</label>
-    <input id="fecha" type="date" formControlName="fecha" class="p-inputtext ml-1">
-  </form>
+<div class="campoFiltro">
+  <mat-card class="matCard">
+    <form [formGroup]="formVenta" novalidate autocomplete="off" class="campoFiltro">
+      <label for="fecha" class="campoFiltro">Fecha</label>
+      <input id="fecha" type="date" formControlName="fecha" class="p-inputtext ml-1">
+      <button type="button" class="clean" (click)="clearFilterForm()">
+        <span> Limpiar </span>
+      </button>
+    </form>
+  </mat-card>
 </div>
 <p-table [value]="sale" [tableStyle]="{'min-width': '60rem'}" [paginator]="true" [rows]="5">
   <ng-template pTemplate="caption">

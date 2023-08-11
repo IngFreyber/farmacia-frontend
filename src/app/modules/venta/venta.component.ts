@@ -48,4 +48,7 @@ export class VentaComponent implements OnInit{
         this.sale = res;
       })
   }
+  clearFilterForm(){
+    this.listVentas();
+  }
 }

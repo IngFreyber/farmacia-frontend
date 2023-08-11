@@ -2,3 +2,30 @@ p-table tr:hover {
   background-color: #e5dede;
   cursor: pointer;
 }
+.clean{
+  margin-left: 10px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  border: 2px solid #f28500;
+  background-color: #fbb03c;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.clean:hover{
+  background-color: #f28500;
+}
+.clean:active{
+  background-color: #ccc;
+}
+.campoFiltro{
+  justify-content: center;
+  display: flex;
+  margin: 20px;
+  justify-items: center;
+}
+.matCard{
+  padding: 30px;
+}

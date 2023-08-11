@@ -1,16 +1,19 @@
-<div class="m-2 mt-4">
-  <mat-card class="mt-4">
+<div class="filterMedicamento">
+  <mat-card class="matCard">
     <form [formGroup]="formMedicamento" novalidate autocomplete="off" class="p-card-body ">
       <input id="nombre" type="text" formControlName="nombre" class="p-inputtext ml-1" placeholder="Nombre">
+      <button type="button" class="clean" (click)="clearFilterForm()">
+        <span> Limpiar </span>
+      </button>
     </form>
   </mat-card>
 </div>
 <p-table [value]="products" [tableStyle]="{'min-width': '70rem'}" [paginator]="true" [rows]="5">
   <ng-template pTemplate="caption">
-    <div class="flex align-items-center justify-content-between">
+    <div class="btonNuevo">
       Productos
-      <p-button label="Nuevo Medicamento" class="ml-auto justify-content-end" styleClass="p-button-rounded p-button-sm" pTooltip="Nuevo"
-        matTooltipPosition="above" (click)="saveMedicamentoDialog()">
+      <p-button label="Nuevo Medicamento" class="btonNuevo" styleClass="p-button-rounded p-button-sm"
+        pTooltip="Nuevo medicamento" matTooltipPosition="above" (click)="saveMedicamentoDialog()">
         <mat-icon>add</mat-icon>
       </p-button>
     </div>
@@ -38,7 +41,7 @@
 
         <p-button styleClass="p-button-success p-button-sm p-button-rounded p-button-text m-1" pTooltip="Vender"
           matTooltipPosition="above" (click)="sellMedicamentoDialog(product)">
-          <mat-icon>point_of_sale</mat-icon>
+          <mat-icon>shopping_cart_checkout</mat-icon>
         </p-button>
 
         <p-button styleClass="p-button-warning p-button-sm p-button-rounded p-button-text m-1" pTooltip="Editar"
@@ -48,7 +51,7 @@
 
         <p-button styleClass="p-button-danger p-button-sm p-button-rounded p-button-text m-1" pTooltip="Eliminar"
           matTooltipPosition="above" (click)="deleteMedicamentoDialog(product)">
-          <mat-icon>delete</mat-icon>
+          <mat-icon>delete_forever</mat-icon>
         </p-button>
 
       </td>
@@ -60,4 +63,3 @@
     </div>
   </ng-template>
 </p-table>
-

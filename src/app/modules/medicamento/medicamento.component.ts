@@ -83,4 +83,8 @@ export class MedicamentoComponent implements OnInit{
         this.ngOnInit();
       });
   }
+
+  clearFilterForm(){
+   this.listMedicamentos();
+  }
 }
